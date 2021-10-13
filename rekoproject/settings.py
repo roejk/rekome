@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rekoserver.apps.RekomenderConfig',
+    'rekoserver.apps.RekoserverConfig',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'rekome.urls'
+ROOT_URLCONF = 'rekoproject.urls'
 
 TEMPLATES = [
     {
@@ -86,7 +86,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'rekoserver',
+        'NAME': 'rekomender',
         'USER': 'admin',
         'PASSWORD': 'siema',
         'HOST': '127.0.0.1',
