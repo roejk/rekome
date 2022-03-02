@@ -1,0 +1,128 @@
+/*noinspection CssUnknownTarget*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #2c2c2c;
+    padding-left: 10px;
+    color: #dddde0;
+    margin-top: 10px;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.movie-text {
+    width: 50%;
+    height: 485px;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.poster-div {
+    float: left;
+}
+
+.poster {
+    height: 485px;
+    width: 342px;
+}
+
+.title {
+    font-size: 35px;
+}
+
+.overview {
+    text-align: justify;
+}
+
+input[type=submit] {
+    font-size: 15px;
+    height: 46px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(342px, 1fr));
+    grid-gap: 15px;
+}
+
+.gallery .item {
+    position: relative;
+    overflow: hidden;
+    width: 342px;
+}
+
+.gallery .item img {
+    vertical-align: middle;
+}
+
+.gallery .caption {
+    margin: 0;
+    padding: 1em;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 342px;
+    max-height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    transition: transform .5s;
+    transform: translateY(100%);
+    background: rgba(40, 40, 40, 0.7);
+    color: rgb(255, 255, 255);
+    display: flex;
+}
+
+.gallery .item:hover .caption {
+    transform: translateY(0%);
+}
+
+.push-right {
+    margin-left: auto;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}

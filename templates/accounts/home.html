@@ -4,25 +4,50 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
     <title>Panel użytkownika</title>
+        <script>
+        function navbar(location) {
+            document.getElementById("frame").src = "{% url 'search' %}".replace(/search/, location.toString());
+        }
+    </script>
 </head>
 <body>
-    <div class="container h-100">
-            <div class="d-flex justify-content-center h-100">
-                <div class="user_card">
-                    <div class="d-flex justify-content-center">
-                        <h3 id="form-title">WITAJ {{ request.user|upper }}</h3>
-                    </div>
-                    <div class="d-flex justify-content-center mt-3">
-                        <a href="{% url 'logout' %}" class="btn btn-primary">Wyloguj</a>
-                    </div>
-                </div>
-            </div>
+<div class="nav-bar">
+    <div class="nav-left">
+        <ul>
+            <a onClick="navbar('');">
+                <li>Home</li>
+            </a>
+            <a onClick="navbar('search');">
+                <li>Szukaj</li>
+            </a>
+            <a onClick="navbar('watched');">
+                <li>Lista</li>
+            </a>
+            <a onClick="navbar('recommend');">
+                <li>Rekomendacje</li>
+            </a>
+        </ul>
     </div>
+
+    <div class="nav-right">
+        <ul>
+            <a class="nav-text">
+                <li>Witaj {{ request.user }}!</li>
+            </a>
+            <a href="{% url 'logout' %}">
+                <li>Wyloguj</li>
+            </a>
+        </ul>
+    </div>
+
+
+</div>
+<div>
+    <iframe id="frame" title="content"></iframe>
+    <p class="home-text">Hej! Możesz teraz wyszukiwać filmy, dodawać i usuwać je do listy,
+        oraz wyświetlać swoje rekomendacje. Skorzystaj z paska nawigacji na górze.</p>
+</div>
 </body>
 </html>

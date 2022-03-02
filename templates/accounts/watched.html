@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/sub.css' %}">
+    <title>Lista obejrzanych</title>
+</head>
+<body>
+{% if not list %}
+    <br>
+    Twoja lista jest pusta.
+{% else %}
+    <div class="gallery">
+    {% for movie, rating in list %}
+        <div class="item">
+            <img src="{{ url }}{{ movie.poster_path }}" alt="cover" class="gallery-img poster">
+            <span class="caption">{{ movie.title }} <br>
+                {% for x in ""|ljust:rating %} ★ {% endfor %}
+                <form method="post" action="" class="push-right">
+                        {% csrf_token %}
+                        <input type="hidden" id="m_id" name="m_id" value="{{ movie.id }}" required="required">
+                    <input type="submit" value="Usuń" id="submit">
+                </form>
+            </span>
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
+</body>
+</html>

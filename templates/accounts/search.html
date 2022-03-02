@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/sub.css' %}">
+    <title>Wyszukiwarka</title>
+</head>
+<body>
+<form method="post" action="" class="search-from">
+    {% csrf_token %}
+    <div>
+        <label for="name" class="label">Podaj tytuł filmu: </label><br><br>
+        <input type="text" id="name" name="name" value="{{ name }}" placeholder="tytuł" required="required" autofocus>
+    </div>
+    <br>
+    <div>
+        <input type="submit" value="Szukaj" id="submit">
+    </div>
+</form>
+<hr>
+{% if msg %}
+    <br>
+    {{ msg }}
+{% elif found %}
+    <br>
+    {% for movie in found %}
+        <div>
+            <div class="poster-div">
+                <img src="{{ url }}{{ movie.poster_path }}" alt="cover" class="poster">
+            </div>
+            <div class="movie-text">
+                <p class="title">{{ movie.title }}</p>
+                <p class="overview">{{ movie.overview }}</p>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div>
+                        <input type="hidden" id="m_id" name="m_id" value="{{ movie.id }}" required="required">
+                    </div>
+                    <div class="rate">
+                        <input type="radio" id="{{ movie.id }}_star5" name="rating" value="5" required="required">
+                        <label for="{{ movie.id }}_star5"></label>
+                        <input type="radio" id="{{ movie.id }}_star4" name="rating" value="4" required="required">
+                        <label for="{{ movie.id }}_star4"></label>
+                        <input type="radio" id="{{ movie.id }}_star3" name="rating" value="3" required="required">
+                        <label for="{{ movie.id }}_star3"></label>
+                        <input type="radio" id="{{ movie.id }}_star2" name="rating" value="2" required="required">
+                        <label for="{{ movie.id }}_star2"></label>
+                        <input type="radio" id="{{ movie.id }}_star1" name="rating" value="1" required="required">
+                        <label for="{{ movie.id }}_star1"></label>
+                    </div>
+                    <div>
+                        <input type="submit" value="Dodaj do listy" id="submit">
+                    </div>
+                </form>
+            </div>
+            <hr>
+        </div>
+    {% endfor %}
+{% endif %}
+</body>
+</html>
