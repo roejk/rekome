@@ -30,13 +30,13 @@ blocks:
       jobs:
         - name: Unit tests
           commands:
-            - cd rekome
+            - cd src
             - python manage.py makemigrations
             - python manage.py migrate
             - python manage.py test
         - name: Checklist
           commands:
-            - cd rekome
+            - cd src
             - python manage.py check --deploy
       secrets:
         - name: DB
