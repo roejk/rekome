@@ -26,6 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8020']
 
 
 # Application definition
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rekoserver.apps.RekoserverConfig',
+    'gunicorn',
 ]
 
 MIDDLEWARE = [
