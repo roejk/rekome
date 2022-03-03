@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'rekoproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# default
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -83,14 +84,30 @@ WSGI_APPLICATION = 'rekoproject.wsgi.application'
 #     }
 # }
 
+# local
+# DATABASES = {
+#
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'rekomender',
+#         'USER': 'admin',
+#         'PASSWORD': 'siema',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#
+#     }
+#
+# }
+
+# remote
 DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'rekomender',
-        'USER': 'admin',
-        'PASSWORD': 'siema',
-        'HOST': '127.0.0.1',
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'),
         'PORT': '5432',
 
     }
