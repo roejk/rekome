@@ -12,6 +12,7 @@ COPY requirements.txt start-server.sh /opt/app/
 RUN pip install -r requirements.txt
 COPY src /opt/app/rekome/
 RUN chown -R www-data:www-data /opt/app
+RUN chmod 755 start-server.sh
 
 EXPOSE 8020
 STOPSIGNAL SIGTERM
