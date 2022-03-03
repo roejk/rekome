@@ -27,11 +27,9 @@ blocks:
       jobs:
         - name: Unit tests
           commands:
-            - cd rekome
             - python manage.py makemigrations
             - python manage.py migrate
             - python manage.py test
         - name: Checklist
           commands:
-            - cd rekome
             - python manage.py check --deploy
