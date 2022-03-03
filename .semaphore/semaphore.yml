@@ -16,6 +16,8 @@ blocks:
             - cache restore
             - pip install --cache-dir .pip_cache -r requirements.txt
             - cache store
+      secrets:
+        - name: TMDB API key
   - name: Test
     task:
       prologue:
@@ -33,3 +35,5 @@ blocks:
         - name: Checklist
           commands:
             - python manage.py check --deploy
+      secrets:
+        - name: TMDB API key
