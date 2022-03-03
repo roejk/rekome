@@ -1,5 +1,5 @@
 version: v1.0
-name: Initial Pipeline
+name: Build
 agent:
   machine:
     type: e1-standard-2
@@ -30,12 +30,19 @@ blocks:
       jobs:
         - name: Unit tests
           commands:
+            - cd src
             - python manage.py makemigrations
             - python manage.py migrate
             - python manage.py test
         - name: Checklist
           commands:
+            - cd src
             - python manage.py check --deploy
       secrets:
         - name: DB
         - name: TMDB API key
+promotions:
+  - name: Dockerize
+    pipeline_file: pipeline_2.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
