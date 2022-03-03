@@ -1,3 +1,6 @@
 /venv/
 /other/
 /venv2/
+/data/
+/.idea/
+/.pip_cache/

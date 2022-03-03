@@ -104,7 +104,7 @@ def get_recommendations(title, indices, cosine_sim):
 
     movies = pd.DataFrame(movies_df['id'][movies_indices], columns=['id'])
     movies = pd.concat([movies, similarity_scores], axis=1, join='inner')
-    print(movies)
+    # print(movies)
 
     return movies
 
