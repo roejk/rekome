@@ -15,6 +15,7 @@ blocks:
             - 'docker build --cache-from=$DOCKER_USERNAME/rekome:latest -t $DOCKER_USERNAME/rekome:latest .'
             - 'docker push $DOCKER_USERNAME/rekome:latest'
       secrets:
+        - name: CSRF_ORIGIN
         - name: DB
         - name: TMDB API key
         - name: dockerhub
