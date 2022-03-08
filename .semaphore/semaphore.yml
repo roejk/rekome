@@ -39,6 +39,7 @@ blocks:
             - cd src
             - python manage.py check --deploy
       secrets:
+        - name: CSRF_ORIGIN
         - name: DB
         - name: TMDB API key
 promotions:
