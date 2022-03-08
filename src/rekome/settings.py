@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8020']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8020', os.getenv('CSRF_ORIGIN')]
 
 
 # Application definition
